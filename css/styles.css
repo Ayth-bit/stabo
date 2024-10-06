@@ -8,3 +8,6 @@ body {
     bottom: 0;
     width: 100%;
   }
+  .custom-marker {
+    cursor: pointer;
+  }

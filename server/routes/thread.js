@@ -1,10 +1,11 @@
 const express = require('express');
 const Thread = require('../models/thread');
+const Response = require('../models/response');
 const router = express.Router();
 
 // スレッド作成
 router.post('/', async (req, res) => {
-  const { title, content, coordinates } = req.body; // contentを追加
+  const { title, content, coordinates } = req.body;
   if (!title || !content || !coordinates || typeof coordinates.lng !== 'number' || typeof coordinates.lat !== 'number') {
     return res.status(400).send({ error: 'Invalid title, content, or coordinates format' });
   }
@@ -37,7 +38,9 @@ router.delete('/:id', async (req, res) => {
     if (!thread) {
       return res.status(404).send({ error: 'Thread not found' });
     }
-    res.status(200).send({ message: 'Thread deleted successfully' });
+    // 関連するレスポンスも削除
+    await Response.deleteMany({ thread: id });
+    res.status(200).send({ message: 'Thread and associated responses deleted successfully' });
   } catch (error) {
     console.error('Error deleting thread:', error);
     res.status(500).send({ error: 'Failed to delete thread', details: error.message });
