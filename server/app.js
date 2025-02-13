@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -8,6 +9,9 @@ const responseRoutes = require('./routes/response');
 
 const app = express();
 const PORT = 3000;
+
+const value =process.env.NEXT_PUBLIC_MAPBOX_API_KEY;
+console.log(value);
 
 mongoose.connect('mongodb://localhost:27017/mapbox-portal', {
   useNewUrlParser: true,
@@ -30,7 +34,7 @@ app.use(express.static(path.join(__dirname, '..')));
 app.use('/assets', express.static(path.join(__dirname, '..', 'assets')));
 
 // ルートURLにアクセスした際にindex.htmlを送信
-app.get('/', (req, res) => {
+app.get('/map-app', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 

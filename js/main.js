@@ -1,4 +1,5 @@
-mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
+// const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_API_KEY;
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/streets-v11",
