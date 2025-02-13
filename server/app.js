@@ -14,7 +14,7 @@ const mongodbOptions = {
   useUnifiedTopology: true,
   ssl: true,
   sslValidate: false,
-  sslCA: fs.readFileSync(path.join(__dirname, 'rds-combined-ca-bundle.pem'))
+  sslCA: fs.readFileSync(path.join(__dirname, 'global-bundle.pem'))
 };
 
 const app = express();
