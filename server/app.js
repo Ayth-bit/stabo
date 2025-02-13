@@ -9,14 +9,14 @@ const responseRoutes = require('./routes/response');
 const fs = require('fs');
 
 // MongoDB接続オプションを定義
-const certFilePath = '/home/ec2-user/rds-ca.pem';
 const mongodbOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   ssl: true,
   sslValidate: false,
-  sslCA: [fs.readFileSync(certFilePath)]
+  sslCA: fs.readFileSync(path.join(__dirname, 'rds-combined-ca-bundle.pem'))
 };
+
 const app = express();
 const PORT = 3000;
 
