@@ -8,7 +8,7 @@ const threadRoutes = require('./routes/thread');
 const responseRoutes = require('./routes/response');
 const fs = require('fs');
 
-const certFilePath = path.join(__dirname, 'rds-combined-ca-bundle.pem');
+const certFilePath = path.join(__dirname, 'global-bundle.pem');
 const cert = fs.readFileSync(certFilePath);
 // MongoDB接続オプションを定義
 const mongodbOptions = {
