@@ -7,7 +7,6 @@ const cors = require('cors'); // corsモジュールのインポート
 const threadRoutes = require('./routes/thread');
 const responseRoutes = require('./routes/response');
 const fs = require('fs');
-const path = require('path');
 
 const certFilePath = path.join(__dirname, 'rds-combined-ca-bundle.pem');
 const cert = fs.readFileSync(certFilePath);
