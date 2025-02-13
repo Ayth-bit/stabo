@@ -27,7 +27,7 @@ const password = encodeURIComponent(process.env.DOCDB_PASSWORD);
 const clusterEndpoint = process.env.DOCDB_ENDPOINT;
 const database = process.env.DOCDB_DATABASE;
 
-const connectionString = `mongodb://${username}:${password}@${clusterEndpoint}:27017/${database}?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`;
+const connectionString = `mongodb://${username}:${password}@${clusterEndpoint}:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false`;
 
 mongoose.connect(connectionString, mongodbOptions)
   .then(() => {
