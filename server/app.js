@@ -15,7 +15,7 @@ const mongodbOptions = {
   useUnifiedTopology: true,
   ssl: true,
   sslValidate: false,
-  sslCA: fs.readFileSync(certFilePath)
+  sslCA: './server/global-bundle.pem',
 };
 
 const app = express();
