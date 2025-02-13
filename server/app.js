@@ -6,6 +6,8 @@ const path = require('path');
 const cors = require('cors'); // corsモジュールのインポート
 const threadRoutes = require('./routes/thread');
 const responseRoutes = require('./routes/response');
+const fs = require('fs');
+
 
 const app = express();
 const PORT = 3000;
