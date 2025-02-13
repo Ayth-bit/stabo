@@ -7,7 +7,9 @@ const cors = require('cors'); // corsモジュールのインポート
 const threadRoutes = require('./routes/thread');
 const responseRoutes = require('./routes/response');
 const fs = require('fs');
-
+const username = encodeURIComponent('aythbit');
+const password = encodeURIComponent('E:aT%Dzu-#VG5A');
+const host = 'docdb-2025-02-13-12-00-39.cluster-cv6gs2soqnbq.ap-northeast-1.docdb.amazonaws.com';
 
 const app = express();
 const PORT = 3000;
@@ -33,7 +35,7 @@ const mongodbOptions = {
   sslCA: [fs.readFileSync('global-bundle.pem')],
 };
 
-mongoose.connect('mongodb://{$aythbit}:{$E:aT%Dzu-#VG5A@}docdb-2025-02-13-12-00-39.cluster-cv6gs2soqnbq.ap-northeast-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', mongodbOptions)
+mongoose.connect('mongodb://${username}:${password}@${host}.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', mongodbOptions)
 .then(() => {
   console.log('Connected to Amazon DocumentDB');
 })
