@@ -11,6 +11,15 @@ const fs = require('fs');
 const app = express();
 const PORT = 3000;
 
+// MongoDB接続オプションを定義
+const mongodbOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: true,
+  sslValidate: false,
+  sslCA: fs.readFileSync('global-bundle.pem')
+};
+
 // MongoDBの接続設定を変更
 const username = encodeURIComponent(process.env.DOCDB_USERNAME);
 const password = encodeURIComponent(process.env.DOCDB_PASSWORD);
@@ -27,13 +36,6 @@ mongoose.connect(connectionString, mongodbOptions)
     console.error('Error connecting to Amazon DocumentDB:', error.message);
   });
 
-  const mongodbOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    ssl: true,
-    sslValidate: false,
-    sslCA: fs.readFileSync('global-bundle.pem')
-  };
   
 // CORSの設定
 app.use(cors());
