@@ -7,18 +7,20 @@ const cors = require('cors'); // corsモジュールのインポート
 const threadRoutes = require('./routes/thread');
 const responseRoutes = require('./routes/response');
 const fs = require('fs');
+const path = require('path');
 
-const app = express();
-const PORT = 3000;
-
+const certFilePath = path.join(__dirname, 'rds-combined-ca-bundle.pem');
+const cert = fs.readFileSync(certFilePath);
 // MongoDB接続オプションを定義
 const mongodbOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   ssl: true,
   sslValidate: false,
-  sslCA: fs.readFileSync('global-bundle.pem')
+  sslCA: cert
 };
+const app = express();
+const PORT = 3000;
 
 // MongoDBの接続設定を変更
 const username = encodeURIComponent(process.env.DOCDB_USERNAME);
