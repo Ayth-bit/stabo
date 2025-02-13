@@ -33,7 +33,7 @@ const mongodbOptions = {
   sslCA: [fs.readFileSync('global-bundle.pem')],
 };
 
-mongoose.connect('mongodb://aythbit:E:aT%Dzu-#VG5A@docdb-2025-02-13-12-00-39.cluster-cv6gs2soqnbq.ap-northeast-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', mongodbOptions)
+mongoose.connect('mongodb://{$aythbit}:{$E:aT%Dzu-#VG5A@}docdb-2025-02-13-12-00-39.cluster-cv6gs2soqnbq.ap-northeast-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', mongodbOptions)
 .then(() => {
   console.log('Connected to Amazon DocumentDB');
 })
